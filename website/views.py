@@ -10,9 +10,10 @@ from intasend import APIService
 views = Blueprint('views', __name__)
 
 # intasend API
-API_PUBLISHABLE_KEY = 'ISPubKey_test_acd842ba-a7ae-4a5e-b70c-ef8ba0b16fa6'
+# get this values from intasend API to query the payment in the order section 
+API_PUBLISHABLE_KEY = ''
 
-API_TOKEN = 'ISSecretKey_test_703c03cf-4cd8-41eb-8c69-2316157f2095'
+API_TOKEN = ''
 
 
 @views.route('/')
@@ -157,7 +158,7 @@ def place_order():
                 total += item.product.current_price * item.quantity
 
             service = APIService(token=API_TOKEN, publishable_key=API_PUBLISHABLE_KEY, test=True)
-            create_order_response = service.collect.mpesa_stk_push(phone_number=254705203169,
+            create_order_response = service.collect.mpesa_stk_push(phone_number=254705000000,
                                                                    email=current_user.email,
                                                                    amount=total + 200, narrative='Purchase of goods')
 
